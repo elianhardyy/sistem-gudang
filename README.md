@@ -5,8 +5,9 @@
 2. Install dependencies: `composer install`
 3. Copy `.env.example` ke `.env` dan sesuaikan konfigurasi database
 4. Generate key: `php artisan key:generate`
-5. Jalankan migrasi: `php artisan migrate`
-6. Jalankan server: `php artisan serve`
+5. Run migration: `php artisan migrate`
+6. Run seeder: `php artisan db:seed`
+7. Run server: `php artisan serve`
 
 ### Dokumentasi API
 Dokumentasi endpoint tersedia di Postman: [Link Postman](<postman_documentation_link>)
