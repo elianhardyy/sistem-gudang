@@ -1,7 +1,7 @@
 # Sistem Gudang
 
 ### Cara Install
-1. Clone repository: `git clone <repository_url>`
+1. Clone repository: `git clone https://github.com/elianhardyy/sistem-gudang.git`
 2. Install dependencies: `composer install`
 3. Copy `.env.example` ke `.env` dan sesuaikan konfigurasi database
 4. Generate key: `php artisan key:generate`
