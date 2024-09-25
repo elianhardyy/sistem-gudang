@@ -50,7 +50,18 @@ class LokasiController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $lokasi = Lokasi::find($id);
+        if(!$lokasi){
+            return response()->json([
+                'success' => false,
+                'message' => 'Lokasi tidak ditemukan',
+            ], 404);
+        }
+        return response()->json([
+            'success' => true,
+            'message' => 'Detail Lokasi',
+            'data' => $lokasi
+        ], 200);
     }
 
     /**
@@ -66,7 +77,23 @@ class LokasiController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $lokasi = Lokasi::find($id);
+        if(!$lokasi){
+            return response()->json([
+                'success'=>false,
+                'message'=>'Lokasi tidak ditemukan'
+            ],404);
+        }
+        $validation = $request->validate([
+            'nama_lokasi'=>'required',
+            'deskripsi'=>'required'
+        ]);
+        $lokasi->update($validation);
+        return response()->json([
+            'success'=>true,
+            'message'=>'Lokasi berhasil diperbarui',
+            'data'=>$lokasi
+        ],200);
     }
 
     /**
@@ -74,6 +101,17 @@ class LokasiController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $lokasi = Lokasi::find($id);
+        if(!$lokasi){
+            return response()->json([
+                'success' => false,
+                'message' => 'Lokasi tidak ditemukan',
+            ], 404);
+        }
+        $lokasi->delete();
+        return response()->json([
+            'success' => true,
+            'message' => 'Lokasi berhasil dihapus',
+        ], 200);
     }
 }

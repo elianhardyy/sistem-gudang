@@ -143,9 +143,10 @@ class BarangController extends Controller
                 'errors' => $validator->errors()
             ], 400);
         }
-
+        $kategori = Kategori::find($request->kategori_id);
+        $kodeUnikBarang = $kategori->kode_unik . $request->kode;
         // Update barang
-        $barang->update($request->all());
+        $barang->update(array_merge($request->all(),['kode'=>$kodeUnikBarang]));
 
         return response()->json([
             'success' => true,

@@ -26,6 +26,8 @@ use Illuminate\Support\Facades\Route;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register',[AuthController::class,'register']);
 Route::middleware(['auth:sanctum'])->group(function(){
+    Route::get('barang',[BarangController::class,'index']);
+    Route::get('barang/dashboard', [BarangController::class,'dashboard']);
     Route::post('/logout',[AuthController::class,'logout']);
 });
 //protected route
@@ -37,7 +39,6 @@ Route::middleware(['auth:sanctum','role:manager|admin'])->group(function(){
     Route::resource('kategoris',KategoriController::class);
     Route::resource('suppliers',SupplierController::class);
     Route::resource('barangs', BarangController::class);
-    Route::get('barang/dashboard', [BarangController::class,'dashboard']);
     Route::resource('mutasis',MutasiController::class);
     Route::get('history/barang/{barang}', [MutasiController::class, 'historyByBarang']);
     Route::get('history/user/{user}', [MutasiController::class, 'historyByUser']);
@@ -49,9 +50,9 @@ Route::middleware(['auth:sanctum','role:manager|admin'])->group(function(){
     Route::get('lokasi/{id}',[LokasiController::class,'show']);
 });
 
-Route::middleware(['auth:sanctum', 'permission:view mutasi'])->group(function () {
-    Route::get('mutasi', [MutasiController::class, 'index']);
-});
+// Route::middleware(['auth:sanctum', 'permission:view mutasi'])->group(function () {
+//     Route::get('mutasi', [MutasiController::class, 'index']);
+// });
 
 Route::middleware(['auth:sanctum','role:karyawan'])->group(function(){
     Route::get('barang/karyawan',[BarangController::class,'index']);
