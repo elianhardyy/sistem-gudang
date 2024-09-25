@@ -10,4 +10,4 @@
 7. Run server: `php artisan serve`
 
 ### Dokumentasi API
-Dokumentasi endpoint tersedia di Postman: [Link Postman](https://documenter.getpostman.com/view/18886846/2sAXqwXzPd)
+Dokumentasi endpoint tersedia di Postman: [API Documentation](https://documenter.getpostman.com/view/18886846/2sAXqwXzPd)
